@@ -1,0 +1,271 @@
+/* origin element */
+:root {
+    --primary: #ff5c62;
+    --secondary: #0a8dff;
+    --default: rgb(228, 228, 228);
+}
+
+body {
+    display: flex;
+    justify-content: space-between;
+    margin: 0;
+}
+
+button, .bt {
+    padding: 10px 15px;
+    border-radius: 5px;
+}
+
+a {
+    font-size: 14px;
+    color: #000;
+}
+
+h5 {
+    margin: 10px 0;
+    font-size: 17px;
+}
+
+h6 {
+    margin: 5px 0;
+    font-size: 14px;
+}
+
+/* custom element */
+.bg__setup {
+    background-size: cover !important;
+    background-position: center !important;
+    background-repeat: no-repeat !important;
+}
+
+.m__0 {
+    margin: 0;
+}
+
+.tx__medium {
+    font-weight: 500;
+}
+
+.tx__bold {
+    font-weight: 700;
+}
+
+/* navigation */
+#nav {
+    width: 230px;
+    min-height: 100vh;
+    padding: 20px;
+    position: fixed;
+    border-right: 1px solid var(--default);
+}
+
+#nav a {
+    display: block;
+    margin-bottom: 10px;
+    -webkit-transition: all .2s linear;
+    -moz-transition: all .2s linear;
+    -o-transition: all .2s linear;
+    transition: all .2s linear;
+}
+
+#nav a.active {
+    background-color: var(--primary);
+    box-shadow: 0 2px 12px -6px #cc292f;
+    color: #fff;
+}
+
+.nav__link {
+    margin-top: 50px;
+}
+
+/* body */
+#main {
+    width: 100%;
+    margin-left: 230px;
+    padding: 40px;
+}
+#main > div {
+    display: flex;
+}
+
+#main > div > div:nth-child(1) {
+    width: 65%;
+}
+
+#main > div > div:nth-child(2) {
+    width: calc(35% - 30px);
+    margin-left: 30px;
+}
+
+#main > div > div:nth-child(2) > div {
+    position: -webkit-sticky;
+    position: sticky;
+    top: 40px;
+}
+
+#main > div > div:nth-child(2) {
+    width: calc(35% - 30px);
+    margin-left: 30px;
+}
+
+#match > div > div > h6 {
+    margin: 20px 0 10px;
+}
+
+.match__today .match:nth-child(2) {
+    width: 100%;
+    height: 200px;
+    padding: 15px 25px;
+    align-items: flex-end;
+    background: url('../img/home__header.jpeg');
+    background-size: cover !important;
+    background-position: bottom !important;
+    color: #fff;
+    border: 0;
+}
+
+.match__today .match:nth-child(2) h6 {
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.match__today .match:nth-child(2) .team {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    margin: 0 -65px 40px;
+}
+
+.match__today .match:nth-child(2) .team div {
+    width: 50%;
+    padding-bottom: 10px;
+    border-bottom: 2px solid
+}
+
+.match__today .match:nth-child(2) .team div:nth-child(1) {
+    border-color: var(--primary);
+}
+
+.match__today .match:nth-child(2) .team div:nth-child(2) {
+    display: flex;
+    justify-content: flex-end;
+    border-color: var(--default);
+}
+
+.match__today .match:nth-child(2) > div {
+    width: 65px;
+    margin: 0;
+    border: 0;
+}
+
+/* MATCH */
+
+.match {
+    display: flex;
+    margin-bottom: 10px;
+    padding: 10px 20px;
+    align-items: center;
+    background: #fff;
+    border-radius: 5px;
+    border: 1px solid var(--default);
+}
+
+.match .time {
+    width: 55px;
+    border-right: 1px solid var(--default);
+}
+
+.match .team {
+    width: calc(100% - 130px);
+    margin: 0 20px;
+}
+
+.match .team > div {
+    display: flex;
+    justify-content: space-between;
+}
+
+.match .action {
+    display: flex;
+    justify-content: flex-end;
+    width: 55px;
+    border-left: 1px solid var(--default);
+}
+
+.match .action .img {
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+    background: url('../img/i__notification__disable.png');
+}
+
+.match .action .img.active {
+    background: url('../img/i__notification__active.png');
+}
+
+.match__status {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 25px;
+    padding: 0 5px;
+    font-size: 12px;
+    font-weight: 500;
+    text-transform: uppercase;
+    border-radius: 3px;
+}
+
+.match__status.live {
+    background: #ffc3c3;
+    color: var(--primary);
+}
+
+.match__status.scheduled {
+    background: #c3f1ff;
+    color: var(--secondary);
+}
+
+/* MATCH LIVE */
+.match__live {
+    margin-bottom: 20px;
+    padding: 20px;
+    border-radius: 5px;
+    border: 1px solid var(--default);
+}
+
+.match__live.active {
+    background: #fff;
+}
+
+.match__live.disable {
+    height: 100px;
+    width: 100%;
+    padding: 0 15%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    background: var(--default);
+}
+
+.match__live .match__info {
+    display: flex;
+    justify-content: space-between;
+}
+
+.match__live .team > div {
+    display: flex;
+    justify-content: space-between;
+}
+
+.match__live .time {
+    margin-bottom: 10px;
+    font-size: 13px;
+    color: rgb(150, 150, 150);
+}
+
+.match__pinned .match__info, .match__live a {
+    margin: 20px 0 0;
+    padding: 10px 0 0;
+    border-top: 1px solid var(--default);
+}

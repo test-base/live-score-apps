@@ -33,5 +33,21 @@ module.exports = {
             template: "./src/index.html",
             filename: "index.html"
         }),
+        new HtmlWebpackPlugin({
+            template: "./src/pages/match.html",
+            filename: "match.html"
+        }),
+        new HtmlWebpackPlugin({
+            template: "./src/pages/league.html",
+            filename: "league.html"
+        }),
+        new HtmlWebpackPlugin({
+            template: "./src/pages/favorite.html",
+            filename: "favorite.html"
+        }),
+        new HtmlWebpackPlugin({
+            template: "./src/components/navbar/navbar.html",
+            filename: "navbar.html"
+        }),
     ]
 }
