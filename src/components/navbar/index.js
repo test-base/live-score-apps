@@ -1,3 +1,5 @@
+import fetchData from '../../utils/api';
+
 const navbar = () => {
     document.addEventListener('DOMContentLoaded', (() => {
         let page = window.location.hash.substr(1);
@@ -12,6 +14,7 @@ const navbar = () => {
         xhttp.onreadystatechange = function() {
             if (this.readyState == 4) {
                 const wrapper = document.querySelector("#main");
+                fetchData(page);
                 if (this.status == 200) {
                     wrapper.innerHTML = xhttp.responseText;
                 } else if (this.status == 404) {

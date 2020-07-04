@@ -197,6 +197,11 @@ h6 {
     height: 20px;
     cursor: pointer;
     background: url('../img/i__notification__disable.png');
+    transition: .3s;
+}
+
+.match .action .img:hover {
+    background: url('../img/i__notification__active.png');
 }
 
 .match .action .img.active {
