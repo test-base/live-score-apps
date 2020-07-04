@@ -1,14 +1,13 @@
 import match from './match';
+import league from './league';
 
 const fetchData = (page) => {
-    let store = {};
-
     switch (page) {
         case "match":
             match();
             break;
         case "league":
-            console.log(page);
+            league();
             break;
         case "favorite":
             console.log(page);
