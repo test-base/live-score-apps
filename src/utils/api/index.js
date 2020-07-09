@@ -10,7 +10,6 @@ const fetchData = (page) => {
             league();
             break;
         case "favorite":
-            console.log(page);
             break;
         default:
             break;

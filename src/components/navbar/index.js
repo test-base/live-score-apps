@@ -38,10 +38,14 @@ const navbar = () => {
 
                     document.querySelectorAll('.nav__link a').forEach((el) => {
                         el.addEventListener('click', ((e) => {
+                            const historyPage = window.location.hash.substr(1);
                             const page = e.target.getAttribute('href').substr(1);
-                            document.querySelector('.active').classList.remove('active');
-                            e.target.classList.add('active');
-                            loadPage(page);
+                            
+                            if (page !== historyPage) {
+                                document.querySelector('.active').classList.remove('active');
+                                e.target.classList.add('active');
+                                loadPage(page);
+                            }
                         }));
                     });
                 }

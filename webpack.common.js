@@ -1,6 +1,6 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const ServiceWorkerWebpackPlugin = require('serviceworker-webpack-plugin');
+const WorkboxPlugin = require('workbox-webpack-plugin');
 
 module.exports = {
     entry: "./src/index.js",
@@ -13,18 +13,18 @@ module.exports = {
             {
                 test: /\.css$/,
                 use: [
-                    {loader: "style-loader"},
-                    {loader: "css-loader"}
+                    { loader: "style-loader" },
+                    { loader: "css-loader" }
                 ]
             },
             {
-                test: /\.(png|jp(e*)g|svg|gif)$/,  
+                test: /\.(png|jp(e*)g|svg|gif)$/,
                 use: [{
                     loader: 'url-loader',
-                    options: { 
+                    options: {
                         limit: 8000, // Convert images < 8kb to base64 strings
                         name: 'img/[hash]-[name].[ext]'
-                    } 
+                    }
                 }]
             }
         ]
@@ -50,9 +50,19 @@ module.exports = {
             template: "./src/components/navbar/navbar.html",
             filename: "navbar.html"
         }),
-        new ServiceWorkerWebpackPlugin({
-            entry: path.join(__dirname, './src/sw.js'),
-          }),
+        // new WorkboxPlugin({
+        //     globDirectory: './dist/',
+        //     globPatterns: ['**/*.{html,js,css}'],
+        //     swSrc: './src/service-worker.js',
+        //     swDest: './dist/service-worker.js'
+        // }),
+        new WorkboxPlugin.GenerateSW({
+            exclude: [/\.(?:png|jp(e*)g|svg|gif)$/],
+            runtimeCaching: [{
+                urlPattern: /\.(?:png|jp(e*)g|svg|gifZ)$/,
+                handler: 'CacheFirst',
+            }]
+        })
     ],
     devServer: {
         contentBase: path.join(__dirname, 'dist'),
@@ -60,5 +70,5 @@ module.exports = {
         disableHostCheck: true,
         compress: true,
         port: 9000
-      }
+    }
 }
