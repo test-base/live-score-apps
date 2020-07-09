@@ -10,7 +10,7 @@ const checkElement = (selector) => {
                     waitEl(selector, count)
                 }, 100);
             }
-        }; 
+        };
         waitEl(selector);
     });
 };
@@ -27,12 +27,23 @@ const checkMultiElement = (selector) => {
                     waitEl(selector, count)
                 }, 100);
             }
-        }; 
+        };
         waitEl(selector);
     });
 };
 
+const addAlert = (el) => {
+    checkElement(el).then(wrapper => {
+        wrapper.innerHTML += `
+        <div class="alert">
+            Need Internet connection to load newest data
+        </div>
+        `
+    });
+}
+
 export default {
+    addAlert,
     checkMultiElement,
     checkElement
 }

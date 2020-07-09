@@ -1,5 +1,6 @@
-const path = require("path");
-const HtmlWebpackPlugin = require("html-webpack-plugin");
+const path = require('path');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const ServiceWorkerWebpackPlugin = require('serviceworker-webpack-plugin');
 
 module.exports = {
     entry: "./src/index.js",
@@ -49,5 +50,15 @@ module.exports = {
             template: "./src/components/navbar/navbar.html",
             filename: "navbar.html"
         }),
-    ]
+        new ServiceWorkerWebpackPlugin({
+            entry: path.join(__dirname, './src/sw.js'),
+          }),
+    ],
+    devServer: {
+        contentBase: path.join(__dirname, 'dist'),
+        http2: true,
+        disableHostCheck: true,
+        compress: true,
+        port: 9000
+      }
 }

@@ -11,8 +11,8 @@ const matchPage = () => {
     if (!store.today.length) {
         match.matchToday().then(res => {
             if (!res) {
-                console.log("error");
-                return 'error';
+                element.addAlert('.match__today');
+                return '';
             }
             const datas = res.matches;
             store.today.push(datas);
@@ -26,8 +26,8 @@ const matchPage = () => {
     if (!store.today.length) {
         match.matchTomorrow().then(res => {
             if (!res) {
-                console.log("error");
-                return 'error';
+                element.addAlert('.match__tomorrow');
+                return '';
             }
             const datas = res.matches;
             store.tomorrow.push(datas);
@@ -61,7 +61,7 @@ const renderMatch = (datas, el) => {
                     </div>
                 </div>
                 <div class="action">
-                    <div onclick="alert(${data.id})" class="img bg__setup"></div>
+                    <div onclick="alert(${data.id})" class="icon bg__setup"></div>
                 </div>
             </div>`
         )
