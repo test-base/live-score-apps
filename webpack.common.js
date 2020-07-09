@@ -1,6 +1,7 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const WorkboxPlugin = require('workbox-webpack-plugin');
+const ServiceWorkerWebpackPlugin = require('serviceworker-webpack-plugin');
+// const WorkboxPlugin = require('workbox-webpack-plugin');
 
 module.exports = {
     entry: "./src/index.js",
@@ -9,12 +10,14 @@ module.exports = {
         filename: "bundle.js"
     },
     module: {
-        rules: [
-            {
+        rules: [{
                 test: /\.css$/,
-                use: [
-                    { loader: "style-loader" },
-                    { loader: "css-loader" }
+                use: [{
+                        loader: "style-loader"
+                    },
+                    {
+                        loader: "css-loader"
+                    }
                 ]
             },
             {
@@ -30,6 +33,9 @@ module.exports = {
         ]
     },
     plugins: [
+        new ServiceWorkerWebpackPlugin({
+            entry: './src/service-worker.js',
+        }),
         new HtmlWebpackPlugin({
             template: "./src/index.html",
             filename: "index.html"
@@ -56,19 +62,19 @@ module.exports = {
         //     swSrc: './src/service-worker.js',
         //     swDest: './dist/service-worker.js'
         // }),
-        new WorkboxPlugin.GenerateSW({
+        /* new WorkboxPlugin.GenerateSW({
             exclude: [/\.(?:png|jp(e*)g|svg|gif)$/],
             runtimeCaching: [{
                 urlPattern: /\.(?:png|jp(e*)g|svg|gifZ)$/,
                 handler: 'CacheFirst',
             }]
-        })
+        }) */
     ],
-    devServer: {
+    /* devServer: {
         contentBase: path.join(__dirname, 'dist'),
         http2: true,
         disableHostCheck: true,
         compress: true,
         port: 9000
-    }
-}
+    } */
+};
